@@ -134,4 +134,6 @@ export default defineConfig({
     strategy: 'normal',
   },
   requestRecord: {},
+  base: process.env.NODE_ENV === 'production' ? './' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
 });
