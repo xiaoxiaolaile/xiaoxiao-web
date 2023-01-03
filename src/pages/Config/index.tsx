@@ -1,33 +1,8 @@
 import { PageContainer } from '@ant-design/pro-components';
+import { bucketList } from '@/services/ant-design-pro/bucket';
 import React , { useState } from 'react';
 import { Select, Input } from 'antd';
 
-const options = [
-  {
-    value: '1',
-    label: 'Not Identified',
-  },
-  {
-    value: '2',
-    label: 'Closed',
-  },
-  {
-    value: '3',
-    label: 'Communicated',
-  },
-  {
-    value: '4',
-    label: 'Identified',
-  },
-  {
-    value: '5',
-    label: 'Resolved',
-  },
-  {
-    value: '6',
-    label: 'Cancelled',
-  },
-];
 
 
 function onSelect(setMessage) {
@@ -41,6 +16,18 @@ function onSelect(setMessage) {
 const Welcome: React.FC = () => {
 
   const [message, setMessage] = useState("ni hao");
+  const [options, setOptions] = useState([]);
+  
+  bucketList().then((data)=>{
+    console.log(data)
+    let array = data.data
+    let list = []
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index]
+      list.push({value:index, label: `[桶]${element}`})
+    }
+    setOptions(list)
+  })
 
   return (
     <PageContainer>
