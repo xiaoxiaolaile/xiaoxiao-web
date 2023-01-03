@@ -10,7 +10,13 @@
  * @doc https://umijs.org/docs/guides/proxy
  */
 export default {
-  dev: {},
+  dev: {
+    '/api/': {
+      target: 'http://127.0.0.1:8080',
+      changeOrigin: true,
+      pathRewrite: { '^': '' },
+    },
+  },
   /**
    * @name 详细的代理配置
    * @doc https://github.com/chimurai/http-proxy-middleware
