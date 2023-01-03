@@ -13,3 +13,14 @@ export async function bucketList(options?: {}) {
 }
 
 
+/** 获取name数据库列表 GET /api/bucket/:name */
+export async function bucketNameList(name: string, options?: {}) {
+  return request<{
+    data: API.Result;
+  }>('/api/bucket/' + name, {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
+
