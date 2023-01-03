@@ -1,5 +1,5 @@
 import { EditableProTable, PageContainer } from '@ant-design/pro-components';
-import { bucketList } from '@/services/ant-design-pro/bucket';
+import { bucketList, bucketNameList } from '@/services/ant-design-pro/bucket';
 import React, { useState } from 'react';
 import { Select, Input } from 'antd';
 
@@ -13,10 +13,27 @@ type DataSourceType = {
 };
 
 
-function onSelect(setName) {
-  return (key, option) => {
-    console.log(option)
-    setName(option.label.replace("[桶]",""))
+function onSelect(setName, setDataSource) {
+
+  return (value, option) => {
+    // console.log(option)
+    let name = option.label.replace("[桶]","")
+    //获取列表
+    setName(name)
+    bucketNameList(name).then(data => {
+      // console.log(data)
+      let array = data.data
+      let list: DataSourceType[] = []
+      if (array) {
+        for (let index = 0; index < array.length; index++) {
+          const element = array[index];
+          console.log(element)
+          list.push({id: (Math.random() * 1000000).toFixed(0), name: name, key: element.key, value: element.value })
+        }
+      }
+      setDataSource(list)
+    })
+    
   }
 
 }
@@ -65,8 +82,7 @@ const Welcome: React.FC = () => {
     },
     {
       title: '值',
-      key: 'state',
-      dataIndex: 'state',
+      dataIndex: 'value',
     },
     {
       title: '操作',
@@ -105,7 +121,7 @@ const Welcome: React.FC = () => {
           (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
         }
         onSelect={
-          onSelect(setName)
+          onSelect(setName, setDataSource)
         }
         options={options}
       />
@@ -113,7 +129,6 @@ const Welcome: React.FC = () => {
       <EditableProTable<DataSourceType>
         rowKey="id"
         headerTitle="可编辑表格"
-        maxLength={5}
         scroll={{
           x: 960,
         }}
@@ -128,11 +143,11 @@ const Welcome: React.FC = () => {
         loading={false}
 
         columns={columns}
-        request={async () => ({
-          data: defaultData,
-          total: 3,
-          success: true,
-        })}
+        // request={async () => ({
+        //   data: defaultData,
+        //   total: 3,
+        //   success: true,
+        // })}
         value={dataSource}
         onChange={setDataSource}
         editable={{
