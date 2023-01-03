@@ -23,6 +23,12 @@ export default [
     ],
   },
   {
+    path: '/config',
+    name: 'config',
+    icon: 'smile',
+    component: './Config',
+  },
+  {
     path: '/welcome',
     name: 'welcome',
     icon: 'smile',
