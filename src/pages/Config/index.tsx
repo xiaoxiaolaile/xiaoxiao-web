@@ -1,5 +1,5 @@
 import { EditableProTable, PageContainer } from '@ant-design/pro-components';
-import { bucketList, bucketNameList, addBucketName } from '@/services/ant-design-pro/bucket';
+import { bucketList, bucketNameList, editBucketName } from '@/services/ant-design-pro/bucket';
 import React, { useState } from 'react';
 import { Select } from 'antd';
 
@@ -26,7 +26,7 @@ function onSelect(option, setName, setDataSource) {
     if (array) {
       for (let index = 0; index < array.length; index++) {
         const element = array[index];
-        console.log(element)
+        // console.log(element)
         list.push({ id: (Math.random() * 1000000).toFixed(0), name: name, key: element.key, value: element.value })
       }
     }
@@ -44,7 +44,6 @@ const Welcome: React.FC = () => {
   const [position, setPosition] = useState<'top' | 'bottom' | 'hidden'>('bottom');
 
   bucketList().then((data) => {
-    console.log(data)
     let array = data.data
     let list = []
     for (let index = 0; index < array.length; index++) {
@@ -67,9 +66,7 @@ const Welcome: React.FC = () => {
         };
       },
       // 第一行不允许编辑
-      editable: (text, record, index) => {
-        return index !== 0;
-      },
+      editable: false,
       width: '15%',
     },
     {
@@ -96,8 +93,12 @@ const Welcome: React.FC = () => {
         </a>,
         <a
           key="delete"
-          onClick={() => {
+          onClick={async () => {
             setDataSource(dataSource.filter((item) => item.id !== record.id));
+            let result = await editBucketName(record.name, {key: record.key, value: ""})
+            if (result.status === 200){
+              console.log("删除数据", record)
+            }
           }}
         >
           删除
@@ -154,13 +155,14 @@ const Welcome: React.FC = () => {
           type: 'multiple',
           editableKeys,
           onSave: async (rowKey, data, row) => {
-            console.log(rowKey, data, row);
-            let result = await addBucketName(name, data)
+            // console.log(rowKey, data, row);
+            let result = await editBucketName(name, data)
             if (result.status === 200){
               console.log("添加成功")
             }
           },
-          onChange: setEditableRowKeys,
+          onChange: setEditableRowKeys
+         
         }}
       />
     </PageContainer>
