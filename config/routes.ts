@@ -25,12 +25,51 @@ export default [
   {
     path: '/config',
     name: 'config',
-    icon: 'smile',
+    icon: 'smile', 
     component: './Config',
+  },
+  {
+    path: '/plugins',
+    name: 'plugins',
+    icon: 'crown',
+    access: 'canAdmin',
+    routes: [
+      {
+        path: '/plugins',
+        redirect: '/plugins/all',
+      },
+      {
+        path: '/plugins/all',
+        name: 'all',
+        component: './Plugins',
+      },
+      {
+        path: '/plugins/rule',
+        name: 'rule',
+        component: './Plugins',
+      },
+      {
+        path: '/plugins/module',
+        name: 'module',
+        component: './Plugins',
+      },
+      {
+        path: '/plugins/server',
+        name: 'server',
+        component: './Plugins',
+      },
+      {
+        path: '/plugins/cron',
+        name: 'cron',
+        component: './Plugins',
+      },
+
+    ],
   },
   {
     path: '/welcome',
     name: 'welcome',
+    layout: false,
     icon: 'smile',
     component: './Welcome',
   },
@@ -38,6 +77,7 @@ export default [
     path: '/admin',
     name: 'admin',
     icon: 'crown',
+    layout: false,
     access: 'canAdmin',
     routes: [
       {
@@ -55,11 +95,12 @@ export default [
     name: 'list.table-list',
     icon: 'table',
     path: '/list',
+    layout: false,
     component: './TableList',
   },
   {
     path: '/',
-    redirect: '/welcome',
+    redirect: '/config',
   },
   {
     path: '*',
