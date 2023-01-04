@@ -1,7 +1,7 @@
 import { EditableProTable, PageContainer } from '@ant-design/pro-components';
-import { bucketList, bucketNameList } from '@/services/ant-design-pro/bucket';
+import { bucketList, bucketNameList, addBucketName } from '@/services/ant-design-pro/bucket';
 import React, { useState } from 'react';
-import { Select, Input } from 'antd';
+import { Select } from 'antd';
 
 
 type DataSourceType = {
@@ -13,28 +13,25 @@ type DataSourceType = {
 };
 
 
-function onSelect(setName, setDataSource) {
-
-  return (value, option) => {
-    // console.log(option)
-    let name = option.label.replace("[桶]","")
-    //获取列表
-    setName(name)
-    bucketNameList(name).then(data => {
-      // console.log(data)
-      let array = data.data
-      let list: DataSourceType[] = []
-      if (array) {
-        for (let index = 0; index < array.length; index++) {
-          const element = array[index];
-          console.log(element)
-          list.push({id: (Math.random() * 1000000).toFixed(0), name: name, key: element.key, value: element.value })
-        }
+function onSelect(option, setName, setDataSource) {
+  // console.log(option)
+  let name = option.label.replace("[桶]", "")
+  //获取列表
+  setName(name)
+  setDataSource([])
+  bucketNameList(name).then(data => {
+    // console.log(data)
+    let array = data.data
+    let list: DataSourceType[] = []
+    if (array) {
+      for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        console.log(element)
+        list.push({ id: (Math.random() * 1000000).toFixed(0), name: name, key: element.key, value: element.value })
       }
-      setDataSource(list)
-    })
-    
-  }
+    }
+    setDataSource(list)
+  })
 
 }
 
@@ -121,7 +118,10 @@ const Welcome: React.FC = () => {
           (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
         }
         onSelect={
-          onSelect(setName, setDataSource)
+          (value, option) => {
+            onSelect(option, setName, setDataSource)
+          }
+
         }
         options={options}
       />
@@ -135,9 +135,9 @@ const Welcome: React.FC = () => {
         recordCreatorProps={
           position !== 'hidden'
             ? {
-                position: position as 'top',
-                record: () => ({ id: (Math.random() * 1000000).toFixed(0), name: name }),
-              }
+              position: position as 'top',
+              record: () => ({ id: (Math.random() * 1000000).toFixed(0), name: name }),
+            }
             : false
         }
         loading={false}
@@ -155,7 +155,10 @@ const Welcome: React.FC = () => {
           editableKeys,
           onSave: async (rowKey, data, row) => {
             console.log(rowKey, data, row);
-            await waitTime(2000);
+            let result = await addBucketName(name, data)
+            if (result.status === 200){
+              console.log("添加成功")
+            }
           },
           onChange: setEditableRowKeys,
         }}

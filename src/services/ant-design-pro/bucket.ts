@@ -23,4 +23,18 @@ export async function bucketNameList(name: string, options?: {}) {
   });
 }
 
+/** 新增一条数据 POST /api/bucket/:name */
+export async function addBucketName(name: string, body :{}, options?: {}) {
+  return request<{
+    data: API.Result;
+  }>('/api/bucket/' + name, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 
