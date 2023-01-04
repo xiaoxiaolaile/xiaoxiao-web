@@ -103,5 +103,6 @@ declare namespace API {
     status?: number;
     message?: string;
     data?: any;
+    total?: number
   };
 }
