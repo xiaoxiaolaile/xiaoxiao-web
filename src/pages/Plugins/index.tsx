@@ -1,9 +1,10 @@
 import { ProList } from '@ant-design/pro-components';
 import { Button, Space, Tag } from 'antd';
-import { request }  from '@umijs/max';
+import { request } from '@umijs/max';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { pluginList } from '@/services/ant-design-pro/plugin';
+import { history } from 'umi';
 
 type Item = {
 
@@ -17,7 +18,7 @@ type Item = {
 };
 
 
-const app:  React.FC = () => {
+const app: React.FC = () => {
   const location = useLocation();
   let type = location.pathname.replace("/plugins/", "")
   console.log("参数", type)
@@ -34,19 +35,19 @@ const app:  React.FC = () => {
       search={{}}
       rowKey="name"
       headerTitle="基础列表"
-      request={async (params = {}) =>{
+      request={async (params = {}) => {
         console.log("参数", params)
         let name = ""
-        if (params.title){
+        if (params.title) {
           name = params.title
         }
 
-        let result = await pluginList(type,name, {
+        let result = await pluginList(type, name, {
           page: params.current,
           pageSize: params.pageSize,
         })
         console.log(result)
-        
+
         return {
           data: result.data,
           // success 请返回 true，
@@ -62,7 +63,7 @@ const app:  React.FC = () => {
         //   params,
         // })
       }
-        
+
       }
       pagination={{
         pageSize: 10,
@@ -108,19 +109,27 @@ const app:  React.FC = () => {
             //   查看
             // </a>,
             <a
-          key="delete"
-          target="_blank"
-          onClick={async () => {
-            console.log("删除数据", record)
-            action?.reload()
-          }}
-        >
-          删除
-        </a>,
+            key="view"
+            onClick={async () => {
+              history.push(`/scripts/${record.uniqueKey}`);
+            }}
+          >
+            查看
+          </a>,
+            <a
+              key="delete"
+              target="_blank"
+              onClick={async () => {
+                console.log("删除数据", record)
+                action?.reload()
+              }}
+            >
+              删除
+            </a>,
           ],
           search: false,
         },
-  
+
       }}
     />
   )

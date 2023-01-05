@@ -108,8 +108,14 @@ export default [
         redirect: '/scripts/:id',
       },
       {
-        path: '/scripts/:id',
+        path: '/scripts/new',
         name: 'new',
+        component: './Scripts',
+      },
+      {
+        path: '/scripts/:id',
+        name: '',
+        layout: false,
         component: './Scripts',
       },
     ],
