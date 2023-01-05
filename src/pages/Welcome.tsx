@@ -3,6 +3,7 @@ import { useModel } from '@umijs/max';
 import { Card, theme } from 'antd';
 import React from 'react';
 import Editor from '@monaco-editor/react';
+import moment from 'moment';
 
 /**
  * 每个单独的卡片，为了复用样式抽成了组件
@@ -87,9 +88,18 @@ const InfoCard: React.FC<{
 const Welcome: React.FC = () => {
   const { token } = theme.useToken();
   const { initialState } = useModel('@@initialState');
+
+  const _defaultValue = `/**
+  * @title 无名脚本
+  * @create_at ${moment().format('YYYY-MM-DD HH:mm:ss')}
+  * @description 🐒这个人很懒什么都没有留下。
+  * @author 佚名
+  * @version v1.0.0
+  */`;
+
   return (
     <PageContainer>
-      <Editor height="90vh" defaultLanguage="javascript" defaultValue="// some comment" />
+      <Editor height="90vh" defaultLanguage="javascript" defaultValue={_defaultValue} />
 
       <Card
         style={{
