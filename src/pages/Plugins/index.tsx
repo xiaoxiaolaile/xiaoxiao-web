@@ -97,16 +97,26 @@ const app:  React.FC = () => {
           search: false,
         },
         actions: {
-          render: (text, row) => [
+          render: (text, record, _, action) => [
             // <a href={row.url} target="_blank" rel="noopener noreferrer" key="link">
             //   链路
             // </a>,
             // <a href={row.url} target="_blank" rel="noopener noreferrer" key="warning">
             //   报警
             // </a>,
-            <a href={row.url} target="_blank" rel="noopener noreferrer" key="view">
-              查看
-            </a>,
+            // <a href={row.url} target="_blank" rel="noopener noreferrer" key="view">
+            //   查看
+            // </a>,
+            <a
+          key="delete"
+          target="_blank"
+          onClick={async () => {
+            console.log("删除数据", record)
+            action?.reload()
+          }}
+        >
+          删除
+        </a>,
           ],
           search: false,
         },
