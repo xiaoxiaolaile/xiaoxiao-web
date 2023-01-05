@@ -4,7 +4,7 @@ import Editor from '@monaco-editor/react';
 import moment from 'moment';
 import { useParams } from 'umi';
 import { Button } from 'antd';
-import { getPlugin, deletePlugin, editPlugin } from '@/services/ant-design-pro/script';
+import { getPlugin,  editPlugin } from '@/services/ant-design-pro/script';
 
 
 function uuid() {

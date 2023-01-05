@@ -5,6 +5,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { pluginList } from '@/services/ant-design-pro/plugin';
 import { history } from 'umi';
+import {  deletePlugin } from '@/services/ant-design-pro/script';
 
 type Item = {
 
@@ -120,8 +121,11 @@ const app: React.FC = () => {
               key="delete"
               target="_blank"
               onClick={async () => {
-                console.log("删除数据", record)
-                action?.reload()
+                // console.log("删除数据", record)
+                deletePlugin(record.uniqueKey).finally(function() {
+                  // 返回状态为 (resolved 或 rejected)
+                  action?.reload()
+               })
               }}
             >
               删除
