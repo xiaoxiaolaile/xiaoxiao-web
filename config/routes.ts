@@ -68,7 +68,7 @@ export default [
   {
     path: '/welcome',
     name: 'welcome',
-    layout: true,
+    layout: false,
     icon: 'smile',
     component: './Welcome',
   },
@@ -96,6 +96,23 @@ export default [
     path: '/list',
     layout: false,
     component: './TableList',
+  },
+  {
+    name: 'scripts',
+    icon: 'smile',
+    path: '/scripts',
+    layout: true,
+    routes: [
+      {
+        path: '/scripts',
+        redirect: '/scripts/:id',
+      },
+      {
+        path: '/scripts/:id',
+        name: 'new',
+        component: './Scripts',
+      },
+    ],
   },
   {
     path: '/',

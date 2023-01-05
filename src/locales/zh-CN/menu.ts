@@ -7,6 +7,8 @@ export default {
   'menu.plugins.module': '模块',
   'menu.plugins.server': '服务',
   'menu.plugins.cron': '定时',
+  'menu.scripts': '插件编写',
+  'menu.scripts.new': '+新增插件',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',
