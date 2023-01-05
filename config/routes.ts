@@ -25,7 +25,7 @@ export default [
   {
     path: '/config',
     name: 'config',
-    icon: 'smile', 
+    icon: 'smile',
     component: './Config',
   },
   {
@@ -63,13 +63,12 @@ export default [
         name: 'cron',
         component: './Plugins',
       },
-
     ],
   },
   {
     path: '/welcome',
     name: 'welcome',
-    layout: false,
+    layout: true,
     icon: 'smile',
     component: './Welcome',
   },
