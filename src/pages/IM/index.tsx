@@ -51,10 +51,13 @@ function sendImage(array: []) {
 
 }
 
-  const ws = new WebSocket('ws://localhost:8080/api/ws');
 
+  
+
+  let webSocketAddr = process.env.NODE_ENV === 'production' ? `ws://${window.location.host}/api/ws` : `ws://localhost:8080/api/ws`
+  const ws = new WebSocket(webSocketAddr);
   ws.onopen = function (e) {
-    // console.log('连接上 ws 服务端了');
+    console.log('连接上 ws 服务端了');
   }
   ws.onmessage = function(msg) { 
       // console.log('接收服务端发过来的消息: %o', msg); 
