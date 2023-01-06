@@ -68,7 +68,7 @@ export default [
   {
     path: '/admin/welcome',
     name: 'welcome',
-    layout: false,
+    layout: true,
     icon: 'smile',
     component: './Welcome',
   },

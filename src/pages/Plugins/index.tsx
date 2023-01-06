@@ -112,7 +112,7 @@ const app: React.FC = () => {
             <a
             key="view"
             onClick={async () => {
-              history.push(`/scripts/${record.uniqueKey}`);
+              history.push(`/admin/scripts/${record.uniqueKey}`);
             }}
           >
             查看

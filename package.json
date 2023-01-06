@@ -50,6 +50,7 @@
     "@ant-design/pro-components": "^2.3.37",
     "@ant-design/use-emotion-css": "1.0.4",
     "@babel/core": "^7.20.12",
+    "@chatui/core": "^2.4.2",
     "@monaco-editor/react": "^4.4.6",
     "@types/node": "^18.11.18",
     "@umijs/route-utils": "^2.1.3",
