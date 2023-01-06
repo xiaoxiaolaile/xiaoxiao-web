@@ -8,9 +8,14 @@ import { history, Link } from '@umijs/max';
 import defaultSettings from '../config/defaultSettings';
 import { errorConfig } from './requestErrorConfig';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
-import React from 'react';
+import React, { useState } from 'react';
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/admin/user/login';
+
+import { FloatButton, Drawer } from 'antd';
+import { CustomerServiceOutlined } from '@ant-design/icons';
+import IM from './pages/IM';
+
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
@@ -97,10 +102,36 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     // 增加一个 loading 的状态
     childrenRender: (children) => {
       // if (initialState?.loading) return <PageLoading />;
+      
+      const [open, setOpen] = useState(false);
+
+      const showDrawer = () => {
+        setOpen(true);
+      };
+    
+      const onClose = () => {
+        setOpen(false);
+      };
+
       return (
         <>
           {children}
-          <SettingDrawer
+
+          <FloatButton
+            shape="circle"
+            type="primary"
+            style={{ right: 94 }}
+            onClick = {()=>{
+              showDrawer()
+            }}
+            icon={<CustomerServiceOutlined />}
+          />
+
+        <Drawer title="调试插件" placement="right" onClose={onClose} open={open} mask={false}>
+          <IM style={{ right: 194 }} ></IM>
+        </Drawer>
+
+          {/* <SettingDrawer
             disableUrlParams
             enableDarkTheme
             settings={initialState?.settings}
@@ -110,7 +141,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
                 settings,
               }));
             }}
-          />
+          /> */}
         </>
       );
     },

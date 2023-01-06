@@ -6,6 +6,7 @@ specifiers:
   '@ant-design/pro-components': ^2.3.37
   '@ant-design/use-emotion-css': 1.0.4
   '@babel/core': ^7.20.12
+  '@chatui/core': ^2.4.2
   '@monaco-editor/react': ^4.4.6
   '@testing-library/react': ^13.4.0
   '@types/classnames': ^2.3.1
@@ -59,6 +60,7 @@ dependencies:
   '@ant-design/pro-components': 2.3.44_kszfrh5qrrsop62vqozu4wf3pa
   '@ant-design/use-emotion-css': 1.0.4_32pzsv4cxpxdq7o5ljdbgvyzmu
   '@babel/core': 7.20.12
+  '@chatui/core': 2.4.2_biqbaboplfbrettd7655fr4n2y
   '@monaco-editor/react': 4.4.6_6vrjaj6ridxbohi43n7zt4gn7q
   '@types/node': 18.11.18
   '@umijs/route-utils': 2.2.2
@@ -2201,6 +2203,14 @@ packages:
       - supports-color
     dev: true
 
+  /@babel/runtime-corejs3/7.20.7:
+    resolution: {integrity: sha512-jr9lCZ4RbRQmCR28Q8U8Fu49zvFqLxTY9AMOUz+iyMohMoAgpEcVxY+wJNay99oXOpOcCTODkk70NDN2aaJEeg==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      core-js-pure: 3.26.1
+      regenerator-runtime: 0.13.11
+    dev: false
+
   /@babel/runtime/7.0.0-beta.46:
     resolution: {integrity: sha512-/3a3USMKk54BEHhDgY8rtxtaQOs4bp4aQwo6SDtdwmrXmgSgEusWuXNX5oIs/nwzmTD9o8wz2EyAjA+uHDMmJA==}
     dependencies:
@@ -2302,6 +2312,22 @@ packages:
   /@bloomberg/record-tuple-polyfill/0.0.4:
     resolution: {integrity: sha512-h0OYmPR3A5Dfbetra/GzxBAzQk8sH7LhRkRUTdagX6nrtlUgJGYCTv4bBK33jsTQw9HDd8PE2x1Ma+iRKEDUsw==}
     dev: true
+
+  /@chatui/core/2.4.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-YyimOhHIMHQr0KjzaA9HZNWbOWa5atbG4rMYJwa7K/8je49wntI1OHLzQXl1npZfHWEKNNW4DkKf08xPkQoN7A==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@babel/runtime': 7.20.6
+      '@babel/runtime-corejs3': 7.20.7
+      clsx: 1.2.1
+      core-js: 3.27.1
+      dompurify: 2.4.2
+      intersection-observer: 0.12.2
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /@chenshuai2144/sketch-color/1.0.8_react@18.2.0:
     resolution: {integrity: sha512-dPAzzWc+w7zyTAi71WXYZpiTYyIS80MxYyy2E/7jufhnJI1Z29wCPL35VvuJ/gs5zYpF2+w/B7BizWa2zKXpGw==}
@@ -6270,6 +6296,11 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
+
   /co/4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
@@ -6427,7 +6458,6 @@ packages:
   /core-js-pure/3.26.1:
     resolution: {integrity: sha512-VVXcDpp/xJ21KdULRq/lXdLzQAtX7+37LzpyfFM973il0tWSsDEoyzG38G14AjTpK9VTfiNM9jnFauq/CpaWGQ==}
     requiresBuild: true
-    dev: true
 
   /core-js/1.2.7:
     resolution: {integrity: sha512-ZiPp9pZlgxpWRu0M+YWbm6+aQ84XEfH1JRXvfOc/fILWI0VKhLC2LX13X1NYq4fULzLMq7Hfh43CSo2/aIaUPA==}
@@ -6444,6 +6474,11 @@ packages:
     deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
     requiresBuild: true
     dev: true
+
+  /core-js/3.27.1:
+    resolution: {integrity: sha512-GutwJLBChfGCpwwhbYoqfv03LAfmiz7e7D/BNxzeMxwQf10GRSzqiOjx7AmtEk+heiD/JWmBuyBPgFtx0Sg1ww==}
+    requiresBuild: true
+    dev: false
 
   /core-util-is/1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
@@ -7001,6 +7036,10 @@ packages:
     dependencies:
       domelementtype: 2.3.0
     dev: true
+
+  /dompurify/2.4.2:
+    resolution: {integrity: sha512-ckbbxcGpfTJ7SNHC2yT2pHSCYxo2oQgSfdoDHQANzMzQyGzVmalF9W/B+X97Cdik5xFwWtwJP232gIP2+1kNEA==}
+    dev: false
 
   /domutils/1.7.0:
     resolution: {integrity: sha512-Lgd2XcJ/NjEw+7tFvfKxOzCYKZsdct5lczQ2ZaQY8Djz7pfAD3Gbp8ySJWtreII/vDlMVmxwa6pHmdxIYgttDg==}
@@ -9397,7 +9436,6 @@ packages:
 
   /intersection-observer/0.12.2:
     resolution: {integrity: sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==}
-    dev: true
 
   /intl-format-cache/4.3.1:
     resolution: {integrity: sha512-OEUYNA7D06agqPOYhbTkl0T8HA3QKSuwWh1HiClEnpd9vw7N+3XsQt5iZ0GUEchp5CW1fQk/tary+NsbF3yQ1Q==}
