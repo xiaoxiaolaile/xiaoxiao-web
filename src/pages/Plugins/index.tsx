@@ -21,7 +21,7 @@ type Item = {
 
 const app: React.FC = () => {
   const location = useLocation();
-  let type = location.pathname.replace("/plugins/", "")
+  let type = location.pathname.replace("/admin/plugins/", "")
   console.log("参数", type)
 
   return (
