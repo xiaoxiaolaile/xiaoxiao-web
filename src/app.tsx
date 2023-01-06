@@ -10,7 +10,7 @@ import { errorConfig } from './requestErrorConfig';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import React, { useState } from 'react';
 const isDev = process.env.NODE_ENV === 'development';
-const loginPath = '/admin/user/login';
+const loginPath = '/user/login';
 
 import { FloatButton, Drawer } from 'antd';
 import { CustomerServiceOutlined } from '@ant-design/icons';

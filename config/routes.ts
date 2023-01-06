@@ -12,79 +12,79 @@
  */
 export default [
   {
-    path: '/admin/user',
+    path: '/user',
     layout: false,
     routes: [
       {
         name: 'login',
-        path: '/admin/user/login',
+        path: '/user/login',
         component: './User/Login',
       },
     ],
   },
   {
-    path: '/admin/config',
+    path: '/config',
     name: 'config',
     icon: 'smile',
     component: './Config',
   },
   {
-    path: '/admin/plugins',
+    path: '/plugins',
     name: 'plugins',
     icon: 'crown',
     access: 'canAdmin',
     routes: [
       {
-        path: '/admin/plugins',
+        path: '/plugins',
         redirect: '/plugins/all',
       },
       {
-        path: '/admin/plugins/all',
+        path: '/plugins/all',
         name: 'all',
         component: './Plugins',
       },
       {
-        path: '/admin/plugins/rule',
+        path: '/plugins/rule',
         name: 'rule',
         component: './Plugins',
       },
       {
-        path: '/admin/plugins/module',
+        path: '/plugins/module',
         name: 'module',
         component: './Plugins',
       },
       {
-        path: '/admin/plugins/server',
+        path: '/plugins/server',
         name: 'server',
         component: './Plugins',
       },
       {
-        path: '/admin/plugins/cron',
+        path: '/plugins/cron',
         name: 'cron',
         component: './Plugins',
       },
     ],
   },
   {
-    path: '/admin/welcome',
+    path: '/welcome',
     name: 'welcome',
     layout: true,
     icon: 'smile',
     component: './Welcome',
   },
   {
-    path: '/admin/admin2',
+    path: '/admin2',
     name: 'admin',
     icon: 'crown',
     layout: false,
     access: 'canAdmin',
     routes: [
       {
-        path: '/admin/admin2',
-        redirect: '/admin/sub-page',
+        path: '/admin2',
+        redirect: '/sub-page',
       },
       {
-        path: '/admin/admin2/sub-page',
+        path: '/admin2/sub-page',
         name: 'sub-page',
         component: './Admin',
       },
@@ -93,27 +93,27 @@ export default [
   {
     name: 'list.table-list',
     icon: 'table',
-    path: '/admin/list',
+    path: '/list',
     layout: false,
     component: './TableList',
   },
   {
     name: 'scripts',
     icon: 'smile',
-    path: '/admin/scripts',
+    path: '/scripts',
     layout: true,
     routes: [
       {
-        path: '/admin/scripts',
+        path: '/scripts',
         redirect: '/scripts/:id',
       },
       {
-        path: '/admin/scripts/new',
+        path: '/scripts/new',
         name: 'new',
         component: './Scripts',
       },
       {
-        path: '/admin/scripts/:id',
+        path: '/scripts/:id',
         name: '',
         layout: false,
         component: './Scripts',
@@ -122,7 +122,7 @@ export default [
   },
   {
     path: '/',
-    redirect: '/admin/config',
+    redirect: '/config',
   },
   {
     path: '*',
