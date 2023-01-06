@@ -21,7 +21,7 @@ type Item = {
 
 const app: React.FC = () => {
   const location = useLocation();
-  let type = location.pathname.replace("/admin/plugins/", "")
+  let type = location.pathname.replace("/plugins/", "")
   console.log("参数", type)
 
   return (
@@ -112,7 +112,7 @@ const app: React.FC = () => {
             <a
             key="view"
             onClick={async () => {
-              history.push(`/admin/scripts/${record.uniqueKey}`);
+              history.push(`/scripts/${record.uniqueKey}`);
             }}
           >
             查看

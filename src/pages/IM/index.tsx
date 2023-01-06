@@ -86,12 +86,9 @@ function sendImage(array: []) {
       ws.send(val)
       setTyping(true);
 
-      // setTimeout(() => {
-      //   appendMsg({
-      //     type: 'text',
-      //     content: { text: 'Bala bala' },
-      //   });
-      // }, 1000);
+      setTimeout(() => {
+        setTyping(false);
+      }, 1000);
     }
   }
 
