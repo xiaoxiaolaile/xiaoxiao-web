@@ -12,79 +12,79 @@
  */
 export default [
   {
-    path: '/user',
+    path: '/admin/user',
     layout: false,
     routes: [
       {
         name: 'login',
-        path: '/user/login',
+        path: '/admin/user/login',
         component: './User/Login',
       },
     ],
   },
   {
-    path: '/config',
+    path: '/admin/config',
     name: 'config',
     icon: 'smile',
     component: './Config',
   },
   {
-    path: '/plugins',
+    path: '/admin/plugins',
     name: 'plugins',
     icon: 'crown',
     access: 'canAdmin',
     routes: [
       {
-        path: '/plugins',
+        path: '/admin/plugins',
         redirect: '/plugins/all',
       },
       {
-        path: '/plugins/all',
+        path: '/admin/plugins/all',
         name: 'all',
         component: './Plugins',
       },
       {
-        path: '/plugins/rule',
+        path: '/admin/plugins/rule',
         name: 'rule',
         component: './Plugins',
       },
       {
-        path: '/plugins/module',
+        path: '/admin/plugins/module',
         name: 'module',
         component: './Plugins',
       },
       {
-        path: '/plugins/server',
+        path: '/admin/plugins/server',
         name: 'server',
         component: './Plugins',
       },
       {
-        path: '/plugins/cron',
+        path: '/admin/plugins/cron',
         name: 'cron',
         component: './Plugins',
       },
     ],
   },
   {
-    path: '/welcome',
+    path: '/admin/welcome',
     name: 'welcome',
     layout: false,
     icon: 'smile',
     component: './Welcome',
   },
   {
-    path: '/admin',
+    path: '/admin/admin2',
     name: 'admin',
     icon: 'crown',
     layout: false,
     access: 'canAdmin',
     routes: [
       {
-        path: '/admin',
+        path: '/admin/admin2',
         redirect: '/admin/sub-page',
       },
       {
-        path: '/admin/sub-page',
+        path: '/admin/admin2/sub-page',
         name: 'sub-page',
         component: './Admin',
       },
@@ -93,27 +93,27 @@ export default [
   {
     name: 'list.table-list',
     icon: 'table',
-    path: '/list',
+    path: '/admin/list',
     layout: false,
     component: './TableList',
   },
   {
     name: 'scripts',
     icon: 'smile',
-    path: '/scripts',
+    path: '/admin/scripts',
     layout: true,
     routes: [
       {
-        path: '/scripts',
+        path: '/admin/scripts',
         redirect: '/scripts/:id',
       },
       {
-        path: '/scripts/new',
+        path: '/admin/scripts/new',
         name: 'new',
         component: './Scripts',
       },
       {
-        path: '/scripts/:id',
+        path: '/admin/scripts/:id',
         name: '',
         layout: false,
         component: './Scripts',
@@ -122,7 +122,7 @@ export default [
   },
   {
     path: '/',
-    redirect: '/config',
+    redirect: '/admin/config',
   },
   {
     path: '*',
