@@ -31,6 +31,7 @@ specifiers:
   husky: ^7.0.4
   jest: ^29.2.2
   jest-environment-jsdom: ^29.2.2
+  js-cookie: ^3.0.1
   lint-staged: ^10.0.0
   lodash: ^4.17.21
   mockjs: ^1.1.0
@@ -67,6 +68,7 @@ dependencies:
   antd: 5.0.4_jb42yyeu5qxbfieyxjks6malva
   classnames: 2.3.2
   dva: 2.4.1_biqbaboplfbrettd7655fr4n2y
+  js-cookie: 3.0.1
   lodash: 4.17.21
   moment: 2.29.4
   monaco-editor: 0.34.1
@@ -10374,6 +10376,11 @@ packages:
   /js-cookie/2.2.1:
     resolution: {integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==}
     dev: true
+
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
+    dev: false
 
   /js-sdsl/4.2.0:
     resolution: {integrity: sha512-dyBIzQBDkCqCu+0upx25Y2jGdbTGxE9fshMsCdK0ViOongpV+n5tXRcZY9v7CaVQ79AGS9KA1KHtojxiM7aXSQ==}
